@@ -26,8 +26,18 @@ public class Board {
         }
     }
     public static void render(Graphics g) {
-        //Board.draw(g);
-        Piece piece = new Piece(new Color(255, 255, 255));
-        piece.drawPiece(g, PieceType.PAWN, 10, 10);
+        Board.draw(g);
+        for (int y = 0; y < 2; y++) {
+            Piece piece = new Piece(new Color(88, 84, 81));
+            for (int x = 0; x < 8; x++) {
+                piece.drawPiece(g, x, y);
+            }
+        }
+        for (int y = 0; y < 2; y++) {
+            Piece piece = new Piece(new Color(249, 249, 249));
+            for (int x = 0; x < 8; x++) {
+                piece.drawPiece(g, x, y + 6);
+            }
+        }
     }
 }

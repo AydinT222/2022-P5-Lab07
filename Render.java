@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Render extends Applet {
     public void paint(Graphics g) {
         try {
-            File chessImg = new File("C:\\Users\\15262\\IdeaProjects\\2022-P5-Lab07\\chess.png");
+            File chessImg = new File("C:\\Users\\15677\\IdeaProjects\\2022-P5-Lab07\\chess.png");
             if (chessImg.canRead()) {
                 BufferedImage bufImg = ImageIO.read(chessImg);
                 g.drawImage(bufImg, 0, 0, null);
