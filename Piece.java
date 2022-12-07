@@ -2,11 +2,16 @@ import java.awt.*;
 
 public class Piece {
     Color color;
-    public Piece(Color new_color) {
+    Graphics g;
+    public Piece(Graphics new_g, Color new_color) {
+        g = new_g;
         color = new_color;
     };
 
-    public void drawPiece(Graphics g, int x, int y) {
+    public static Color getColor(int player) {
+        return (player == 1) ? new Color(88, 84, 81) : new Color(249, 249, 249);
+    }
+    public void drawPiece(int x, int y) {
         g.setColor(color);
         /*g.fillOval(x * 30, y * 505, 22, 22);
         Polygon polyTop = new Polygon();
@@ -50,6 +55,5 @@ public class Piece {
         polyBot.addPoint(offsetX + 63, offsetY + 66);
         polyBot.addPoint(offsetX + 49, offsetY + 54);
         g.fillPolygon(polyBot);
-
     }
 }

@@ -1,24 +1,24 @@
-import javax.imageio.ImageIO;
 import java.applet.Applet;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class Render extends Applet {
+    public static int minMaxRandom(int min, int max) {
+        int range = max - min + 1;
+        return (int)(Math.floor(Math.random() * range) + min);
+    }
+    static String formatTime(int num) {
+        return (num < 10) ? "0" + num : Integer.toString(num);
+    }
     public void paint(Graphics g) {
-        try {
-            File chessImg = new File("C:\\Users\\15677\\IdeaProjects\\2022-P5-Lab07\\chess.png");
-            if (chessImg.canRead()) {
-                BufferedImage bufImg = ImageIO.read(chessImg);
-                g.drawImage(bufImg, 0, 0, null);
-            } else {
-                System.out.println("cannot read file");
-            }
-            Board.render(g);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        Board.render(g, true);
+        String[] playerTimes = new String[]{
+                formatTime(minMaxRandom(1, 20)) + ":" + formatTime(minMaxRandom(0, 59)),
+                formatTime(minMaxRandom(1, 20)) + ":" + formatTime(minMaxRandom(0, 59))
+        };
+        for (int i = 1; i <= 2; i++) {
+            Clock clock = new Clock(g, i, playerTimes[i - 1]);
+            clock.drawBase();
+            clock.drawTime();
         }
-
     }
 }
